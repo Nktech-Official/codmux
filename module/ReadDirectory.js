@@ -1,5 +1,6 @@
+const { log } = require("console");
 const fs = require("fs");
-const { extname, dirname } = require("path");
+const { extname, basename } = require("path");
 
 const getDir = (path = __dirname) => {
   let dir = fs.readdirSync(path);
@@ -57,8 +58,8 @@ const readDir = (path = __dirname) => {
       return a.isDirectory ? -1 : 1; // Directories come first
     }
   });
-  console.log(visibleDirectoris);
   dirs.closeSync();
-  return visibleDirectoris;
+  const dirName = basename(path);
+  return [visibleDirectoris, dirName];
 };
 module.exports = { getDir, readDir };

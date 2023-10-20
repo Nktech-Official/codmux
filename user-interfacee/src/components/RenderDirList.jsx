@@ -3,33 +3,34 @@ import { RenderFile } from "./RenderFile";
 
 export const RenderDirList = (props) => {
   const [show, setShow] = useState("none");
-  const { val, key, HandleFile } = props;
-  const subDirs = window.dir.readDir(val.path);
-  console.log(subDirs);
+  const { val, index, HandleFile } = props;
+  const [subDirs] = window.dir.readDir(val.path);
   const Show = () => {
     if (show === "none") setShow("block");
     else if (show === "block") setShow("none");
   };
 
   return (
-    <div key={key} style={{ cursor: "pointer" }}>
+    <div key={index} style={{ cursor: "pointer", border: "1px solid white" }}>
       <h3 onClick={Show}>{val.name}</h3>
       <div style={{ display: show }}>
         <ul>
-          {subDirs?.map((ele, index) => {
+          {subDirs?.map((ele, i) => {
             if (ele.isDirectory)
               return (
                 <RenderDirList
                   HandleFile={HandleFile}
                   val={ele}
-                  key={`${key}-${index}`}
+                  key={`${index}-${i}`}
+                  index={`${index}-${i}`}
                 />
               );
             return (
               <RenderFile
                 HandleFile={HandleFile}
                 val={ele}
-                key={`${key}-${index}`}
+                key={`${index}-${i}`}
+                index={`${index}-${i}`}
               />
             );
           })}
