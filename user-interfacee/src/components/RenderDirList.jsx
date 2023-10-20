@@ -11,27 +11,33 @@ export const RenderDirList = (props) => {
   };
 
   return (
-    <div key={index} style={{ cursor: "pointer", border: "1px solid white" }}>
-      <h3 onClick={Show}>{val.name}</h3>
-      <div style={{ display: show }}>
+    <div className="dir-root" key={index}>
+      <h3 className="dir" onClick={Show}>
+        {val.name}
+      </h3>
+      <div className="sub-dir-root" style={{ display: show }}>
         <ul>
           {subDirs?.map((ele, i) => {
             if (ele.isDirectory)
               return (
-                <RenderDirList
+                <li>
+                  <RenderDirList
+                    HandleFile={HandleFile}
+                    val={ele}
+                    key={`${index}-${i}`}
+                    index={`${index}-${i}`}
+                  />
+                </li>
+              );
+            return (
+              <li>
+                <RenderFile
                   HandleFile={HandleFile}
                   val={ele}
                   key={`${index}-${i}`}
                   index={`${index}-${i}`}
                 />
-              );
-            return (
-              <RenderFile
-                HandleFile={HandleFile}
-                val={ele}
-                key={`${index}-${i}`}
-                index={`${index}-${i}`}
-              />
+              </li>
             );
           })}
         </ul>

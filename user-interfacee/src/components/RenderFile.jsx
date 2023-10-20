@@ -3,11 +3,9 @@ export const RenderFile = (props) => {
 
   return (
     <p
-      style={{ cursor: "pointer" }}
+      className="files"
       key={index}
-      onClick={(e) => {
-        e.target.className = "active";
-        console.log(e.target.className);
+      onClick={() => {
         HandleFile(val);
       }}
     >
