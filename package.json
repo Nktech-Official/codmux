@@ -1,0 +1,15 @@
+{
+  "name": "codmux",
+  "version": "0.0.1-alpha",
+  "description": "Video Player for PlayList and Serialized Content.",
+  "main": "main.js",
+  "author": "nktech-official <nk.technical.org@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "private": false,
+  "dependencies": {
+    "electron": "^27.0.0"
+  }
+}
