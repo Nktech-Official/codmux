@@ -6,7 +6,8 @@
   "author": "nktech-official <nk.technical.org@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "ui": "yarn --cwd ./user-interface dev"
   },
   "private": false,
   "dependencies": {
