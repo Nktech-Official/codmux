@@ -28,7 +28,7 @@ function createMainWindow() {
   mainWindow.webContents.openDevTools();
 
   const startUrl = url.format({
-    pathname: path.join(__dirname, "./user-interfacee/dist/index.html"),
+    pathname: path.join(__dirname, "./user-interface/dist/index.html"),
   });
 
   // mainWindow.loadFile(startUrl); //production

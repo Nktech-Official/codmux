@@ -1,3 +1,4 @@
+@import url("./google-material-icon.css");
 :root {
   /*  */
   --bg-color: #2f3650;
@@ -22,7 +23,7 @@ body {
   overflow: hidden;
 }
 .root {
-  width: 98vw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: flex-start;
@@ -37,6 +38,10 @@ body {
   min-width: 300px;
   overflow-y: scroll;
   overflow-x: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .side-bar-header {
   margin: 10px 0;
@@ -44,7 +49,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(0, 2, 20);
+  background-color: var(--green-4);
   font-size: 18px;
 }
 .side-bar-header-dirname {
@@ -61,10 +66,15 @@ body {
   align-items: center;
 }
 .video-container {
-  width: 70%;
-  margin-left: 50px;
+  width: 80%;
+  height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.video {
+  width: 90%;
+}
 .active {
   color: var(--green-1);
 }
@@ -80,6 +90,13 @@ ul {
 .dir {
   font-style: italic;
   margin: 25px 15px;
+  display: flex;
+  line-height: 15px;
+  align-items: center;
+  width: 98%;
+}
+.dir h3 {
+  margin-left: 15px;
 }
 .sub-dir-root {
   margin-left: 35px;
@@ -92,6 +109,13 @@ ul {
   max-height: 45px;
   overflow: hidden;
   line-height: 20px;
+  display: flex;
+}
+.files p {
+  margin-left: 15px;
+}
+.icon {
+  color: var(--green-2);
 }
 ::-webkit-scrollbar {
   width: 8px; /* Adjust the width as needed */
@@ -109,4 +133,30 @@ ul {
 ::-webkit-scrollbar-track {
   background-color: var(--scroll-track-bg);
   border-radius: 30px;
+}
+
+.pdf-reader-root {
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 50px; */
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.pdf-reader-document {
+  width: 95%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pageNumber {
+  position: relative;
+  /* background: red; */
+  bottom: 35px;
+  /* right: 18px; */
+  color: black;
 }

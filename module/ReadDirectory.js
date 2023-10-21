@@ -29,6 +29,7 @@ const supportedVideoExtensions = [
   ".mkv",
   ".wmv",
 ];
+const supportedSubtitleExtensions = [".vtt", ".srt", ".sub", ".sbv", ".ass"];
 const readDir = (path = __dirname) => {
   const dirs = fs.opendirSync(path);
   let dirent = dirs.readSync();
@@ -44,6 +45,7 @@ const readDir = (path = __dirname) => {
       isFile: dirent.isFile(),
       isImage: supportedImageExtensions.includes(extname(dirent.path)),
       isVideo: supportedVideoExtensions.includes(extname(dirent.path)),
+      isSubtitle: supportedSubtitleExtensions.includes(extname(dirent.path)),
     };
     directories.push(x);
     dirent = dirs.readSync();

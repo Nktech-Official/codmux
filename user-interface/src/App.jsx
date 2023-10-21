@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import VideoPlayer from "./components/Video";
 import { RenderDirList } from "./components/RenderDirList";
 import { RenderFile } from "./components/RenderFile";
+import RenderPdf from "./components/RenderPdf";
 import "./App.css";
-import refreshIcon from "./assets/icons/refresh.svg";
-import openFolderIcon from "./assets/icons/folder_open.svg";
 function App() {
   const [dir, setDir] = useState();
   const [Path, setPath] = useState();
   const [imagePath, setImagePath] = useState();
   const [videoPath, setVideoPath] = useState();
   const [dirName, setDirName] = useState();
+  const [pdfPath, setPdfPath] = useState();
 
   const chagePath = (p) => {
     const [data, name] = window.dir.readDir(p);
@@ -19,6 +19,7 @@ function App() {
     setDirName(name);
     setVideoPath(null);
     setImagePath(null);
+    setPdfPath(null);
     localStorage.setItem("path", p);
   };
 
@@ -28,6 +29,9 @@ function App() {
     }
     if (val.isVideo) {
       setVideoPath(val.path);
+    }
+    if (val.extension === ".pdf") {
+      setPdfPath(val.path);
     }
   };
 
@@ -49,18 +53,22 @@ function App() {
           <div className="side-bar-header">
             <p className="side-bar-header-dirname">{dirName}</p>
             <div className="side-bar-header-button-group">
-              <img
-                src={openFolderIcon}
+              <i
+                className="material-symbols-outlined filled-icon"
                 onClick={async () => {
                   const choosenPath = await window.choose.openDir();
                   chagePath(choosenPath);
                 }}
-              />
-              <img
+              >
+                create_new_folder
+              </i>
+              <i
                 onClick={(e) => chagePath(Path)}
-                src={refreshIcon}
+                className="material-symbols-outlined"
                 alt="refresh"
-              />
+              >
+                refresh
+              </i>
             </div>
           </div>
           <div>
@@ -98,6 +106,7 @@ function App() {
               <VideoPlayer path={`media-loader://${videoPath}`} />
             </div>
           )}
+          {pdfPath && <RenderPdf filePath={pdfPath} />}
         </div>
       </div>
     </>

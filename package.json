@@ -7,10 +7,15 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "ui": "yarn --cwd ./user-interface dev"
+    "ui": "yarn --cwd ./user-interface dev",
+    "ui-build": "yarn --cwd ./user-interface build",
+    "dev": "yarn ui | electronmon ."
   },
   "private": false,
   "dependencies": {
     "electron": "^27.0.0"
+  },
+  "devDependencies": {
+    "electronmon": "^2.0.2"
   }
 }
