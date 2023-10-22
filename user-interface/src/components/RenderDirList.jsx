@@ -10,7 +10,7 @@ export const RenderDirList = (props) => {
   };
 
   return (
-    <div className="dir-root" key={index}>
+    <div className="dir-root">
       <div className="dir" onClick={Show}>
         <i className="material-symbols-outlined icon filled-icon">
           {show ? "folder_open" : "folder"}

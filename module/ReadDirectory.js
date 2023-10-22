@@ -1,4 +1,3 @@
-const { log } = require("console");
 const fs = require("fs");
 const { extname, basename } = require("path");
 

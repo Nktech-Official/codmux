@@ -31,49 +31,42 @@ body {
 }
 
 .side-bar {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 20%;
-  min-width: 300px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  background-color: var(--bg-color) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100% !important;
+  width: 30% !important;
+  min-width: 300px !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  color: whitesmoke;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
 }
 .side-bar-header {
-  margin: 10px 0;
-  height: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--green-4);
-  font-size: 18px;
+  margin: 10px 0 !important;
+  height: 25px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background-color: var(--green-4) !important;
+  font-size: 18px !important;
 }
 .side-bar-header-dirname {
-  font-weight: bold;
-  width: 60%;
-  height: 70%;
-  overflow: hidden;
-  font-size: 15px;
-  margin-left: 2px;
+  font-weight: bold !important;
+  width: 60% !important;
+  height: 70% !important;
+  overflow: hidden !important;
+  font-size: 15px !important;
+  margin-left: 2px !important;
 }
 .side-bar-header-button-group {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.video-container {
-  width: 80%;
-  height: 98vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.video {
-  width: 90%;
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  margin-right: 10px !important;
 }
 .active {
   color: var(--green-1);
@@ -84,64 +77,79 @@ ul {
 }
 
 .dir-root {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .dir {
-  font-style: italic;
-  margin: 25px 15px;
-  display: flex;
-  line-height: 15px;
-  align-items: center;
-  width: 98%;
+  font-style: italic !important;
+  margin: 25px 15px !important;
+  display: flex !important;
+  line-height: 15px !important;
+  align-items: center !important;
+  width: 98% !important;
 }
 .dir h3 {
-  margin-left: 15px;
+  margin-left: 15px !important;
+  display: block !important;
+  font-size: 1.17em !important;
+  font-weight: bold !important;
+  margin: 0 !important;
 }
+
 .sub-dir-root {
-  margin-left: 35px;
+  margin-left: 35px !important;
 }
 
 .files {
-  cursor: pointer;
-  margin: 20px 10px;
-  width: 95%;
-  max-height: 45px;
-  overflow: hidden;
-  line-height: 20px;
-  display: flex;
+  cursor: pointer !important;
+  margin: 20px 10px !important;
+  width: 95% !important;
+  max-height: 45px !important;
+  overflow: hidden !important;
+  line-height: 20px !important;
+  display: flex !important;
 }
 .files p {
-  margin-left: 15px;
+  margin-left: 15px !important;
 }
 .icon {
-  color: var(--green-2);
+  color: var(--green-2) !important;
 }
 ::-webkit-scrollbar {
-  width: 8px; /* Adjust the width as needed */
+  width: 8px !important; /* Adjust the width as needed */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--green-1); /* Color of the scrollbar thumb */
-  border-radius: 30px;
+  background: var(--green-1) !important; /* Color of the scrollbar thumb */
+  border-radius: 30px !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--green-2); /* Color of the scrollbar thumb on hover */
+  background: var(
+    --green-2
+  ) !important; /* Color of the scrollbar thumb on hover */
 }
 
 ::-webkit-scrollbar-track {
   background-color: var(--scroll-track-bg);
-  border-radius: 30px;
+  border-radius: 30px !important;
 }
 
+.render-area {
+  width: 70% !important;
+  height: 98vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  overflow-y: scroll !important;
+}
+.video {
+  width: 90%;
+}
 .pdf-reader-root {
-  justify-content: center;
   align-items: center;
-  /* margin-top: 50px; */
   height: 100%;
   width: 100%;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }
@@ -152,11 +160,20 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.pdf-page {
+  margin-bottom: 10px;
 }
 .pageNumber {
   position: relative;
-  /* background: red; */
-  bottom: 35px;
-  /* right: 18px; */
+  bottom: 9px;
   color: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  line-height: 15px;
+  font-size: 15px;
+  font-style: italic;
 }

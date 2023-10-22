@@ -1,6 +1,6 @@
 const { contextBridge, ipcRenderer } = require("electron");
 const { getDir, readDir } = require("./module/ReadDirectory");
-
+const { readHtml } = require("./module/ReadFiles");
 const os = require("os");
 
 contextBridge.exposeInMainWorld("electron", {
@@ -15,4 +15,8 @@ contextBridge.exposeInMainWorld("dir", {
 
 contextBridge.exposeInMainWorld("choose", {
   openDir: () => ipcRenderer.invoke("dialog:openDirectory"),
+});
+
+contextBridge.exposeInMainWorld("file", {
+  readHtml: readHtml,
 });

@@ -9,7 +9,7 @@
     "start": "electron .",
     "ui": "yarn --cwd ./user-interface dev",
     "ui-build": "yarn --cwd ./user-interface build",
-    "dev": "yarn ui | electronmon ."
+    "dev": "yarn ui | electronmon  --trace-warnings ."
   },
   "private": false,
   "dependencies": {
