@@ -33,6 +33,7 @@ const readDir = (path = __dirname) => {
   const dirs = fs.opendirSync(path);
   let dirent = dirs.readSync();
   let directories = [];
+  let prev = null;
   while (dirent) {
     const x = {
       name: dirent.name,
@@ -45,9 +46,13 @@ const readDir = (path = __dirname) => {
       isImage: supportedImageExtensions.includes(extname(dirent.path)),
       isVideo: supportedVideoExtensions.includes(extname(dirent.path)),
       isSubtitle: supportedSubtitleExtensions.includes(extname(dirent.path)),
+      next: null,
+      prev: prev,
     };
-    directories.push(x);
+    prev = dirent.path;
     dirent = dirs.readSync();
+    x.next = dirent ? dirent.path : null;
+    directories.push(x);
   }
   const visibleDirectoris = directories.filter((obj) => !obj.isHidden);
   visibleDirectoris.sort((a, b) => {

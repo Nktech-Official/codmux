@@ -89,11 +89,15 @@ ul {
   width: 98% !important;
 }
 .dir h3 {
-  margin-left: 15px !important;
   display: block !important;
   font-size: 1.17em !important;
   font-weight: bold !important;
-  margin: 0 !important;
+  margin: 0 0 0 15px !important;
+}
+
+.dir h3:hover {
+  color: var(--green-1);
+  text-decoration: underline;
 }
 
 .sub-dir-root {
@@ -111,6 +115,10 @@ ul {
 }
 .files p {
   margin-left: 15px !important;
+}
+.files p:hover {
+  color: var(--green-1);
+  text-decoration: underline;
 }
 .icon {
   color: var(--green-2) !important;
@@ -139,9 +147,42 @@ ul {
   width: 70% !important;
   height: 98vh !important;
   display: flex !important;
-  justify-content: center !important;
   align-items: center !important;
-  overflow-y: scroll !important;
+  overflow-y: auto !important;
+  flex-direction: column;
+}
+.navigation-area {
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+.navigation-area i {
+  height: 48px;
+  width: 48px;
+  font-size: 48px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: var(--green-2);
+  border-radius: 50%;
+}
+.navigation-area i:hover {
+  background-color: #5dac5a;
+}
+.fileTitle {
+  font-weight: bold;
+  font-size: 38px;
+  overflow: hidden;
+  width: 80%;
+  text-align: center;
+  max-height: 120px;
+  line-height: 40px;
 }
 .video {
   width: 90%;

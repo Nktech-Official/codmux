@@ -10,7 +10,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
   import.meta.url
 ).toString();
-export default function RenderPdf({ filePath }) {
+export default function RenderPdf({ renderElement }) {
+  const { path } = renderElement;
   const [numPages, setNumPages] = useState();
   const [pageNumber, setPageNumber] = useState(1);
   const [rotateDeg, setRotateDeg] = useState(0);
@@ -57,7 +58,7 @@ export default function RenderPdf({ filePath }) {
           rotate={rotateDeg}
           options={options}
           className="pdf-reader-document"
-          file={`media-loader://${filePath}`}
+          file={`media-loader://${path}`}
           onLoadSuccess={onDocumentLoadSuccess}
           scale={2}
         >
