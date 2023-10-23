@@ -1,6 +1,6 @@
-# CodeMux
+# Codmux
 
-![logo-transparent-bg](/assets/logo-transparent-bg.png)
+![logo-transparent-bg](./assets/logo-transparent-bg.png)
 A Video Player + Pdf + Html Viewer to watch Downloaded Courses and Series in Sequentiol Order.
 
 ## Features
@@ -21,11 +21,11 @@ A Video Player + Pdf + Html Viewer to watch Downloaded Courses and Series in Seq
 
 - clone this repo .
   ```
-  git clone https://github.com/nktech-official/codemux
+  git clone https://github.com/nktech-official/codmux
   ```
-- change Directory to codemux using
+- change Directory to codmux using
   ```
-  cd  codemux
+  cd  codmux
   ```
 - Install Dependencies using `yarn` if don't have yarn install using `npm install --global yarn`.
 
