@@ -1,6 +1,7 @@
 # Codmux
 
-![logo-transparent-bg](./assets/logo-transparent-bg.png)
+![logo-transparent-bg](https://github.com/Nktech-Official/codmux/assets/76529189/e3591dd3-6de8-46fa-98cd-756dea003783)
+
 A Video Player + Pdf + Html Viewer to watch Downloaded Courses and Series in Sequentiol Order.
 
 ## Features
