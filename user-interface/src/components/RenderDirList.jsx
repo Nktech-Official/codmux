@@ -30,6 +30,7 @@ export const RenderDirList = (props) => {
                 <li key={`${index}-${i}`}>
                   <RenderDirList
                     isActive={ele.path === parent}
+                    renderElement={renderElement}
                     HandleFile={HandleFile}
                     val={ele}
                     index={`${index}-${i}`}

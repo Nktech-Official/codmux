@@ -3,19 +3,34 @@
   "version": "0.0.1-alpha",
   "description": "Video Player for PlayList and Serialized Content.",
   "main": "main.js",
-  "author": "nktech-official <nk.technical.org@gmail.com>",
+  "homepage": "",
+  "author": {
+    "name": "nktech-official",
+    "email": "nk.technical.org@gmail.com",
+    "url": "https://nktech-official.tech"
+  },
   "license": "MIT",
   "scripts": {
     "start": "electron .",
     "ui": "yarn --cwd ./user-interface dev",
     "ui-build": "yarn --cwd ./user-interface build",
-    "dev": "yarn ui | electronmon  --trace-warnings ."
+    "dev": "yarn ui | electronmon  --trace-warnings .",
+    "build": "yarn ui-build && electron-builder"
+  },
+  "build": {
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "AudioVideo",
+      "icon": "./icons/icon-fill-256x256.svg"
+    }
   },
   "private": false,
-  "dependencies": {
-    "electron": "^27.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
     "electronmon": "^2.0.2"
   }
 }
