@@ -70,6 +70,7 @@ body {
 }
 .active {
   color: var(--green-1);
+  text-decoration: underline;
 }
 
 ul {

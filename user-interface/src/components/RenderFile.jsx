@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const RenderFile = (props) => {
-  const { val, index, HandleFile } = props;
+  const { val, index, HandleFile, isActive } = props;
   const { isVideo, isImage, isSubtitle, extension } = val;
   const isHtml = extension === ".html" || extension === ".htm";
   const isPdf = extension === ".pdf";
@@ -17,7 +17,7 @@ export const RenderFile = (props) => {
     else if (isText) setIcon("text_snippet");
   }, []);
   return (
-    <div key={index} className="files">
+    <div key={index} className={`files ${isActive ? "active" : ""}`}>
       <i className="material-symbols-outlined icon">{icon}</i>
       <p
         onClick={() => {

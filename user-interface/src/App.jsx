@@ -21,16 +21,23 @@ function App() {
 
   const HandleFile = (val) => {
     setrenderElement(val);
+    localStorage.setItem("renderElement", JSON.stringify(val));
   };
 
   const Refresh = () => {
     chagePath(Path);
+    localStorage.setItem("renderElement", JSON.stringify({}));
   };
 
   useEffect(() => {
     const p = localStorage.getItem("path");
+    const rE = localStorage.getItem("renderElement");
     if (p) {
       chagePath(p);
+    }
+    if (rE) {
+      console.log(rE);
+      setrenderElement(JSON.parse(rE));
     }
   }, []);
 
@@ -64,6 +71,8 @@ function App() {
               if (val.isDirectory)
                 return (
                   <RenderDirList
+                    isActive={renderElement.parent === val.path}
+                    renderElement={renderElement}
                     HandleFile={HandleFile}
                     val={val}
                     key={index + val.name}

@@ -25,14 +25,14 @@ function createMainWindow() {
     },
   });
   mainWindow.maximize();
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools(); //dev
 
   const startUrl = url.format({
     pathname: path.join(__dirname, "./user-interface/dist/index.html"),
   });
 
-  // mainWindow.loadFile(startUrl); //production
-  mainWindow.loadURL("http://localhost:5173"); //dev
+  mainWindow.loadFile(startUrl); //production
+  // mainWindow.loadURL("http://localhost:5173"); //dev
 
   ipcMain.handle("dialog:openDirectory", async () => {
     const { canceled, filePaths } = await dialog.showOpenDialog(mainWindow, {

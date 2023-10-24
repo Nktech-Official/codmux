@@ -3,8 +3,9 @@ import { RenderFile } from "./RenderFile";
 
 export const RenderDirList = (props) => {
   const [show, setShow] = useState(false);
-  const { val, index, HandleFile } = props;
+  const { val, index, HandleFile, renderElement, isActive } = props;
   const [subDirs] = window.dir.readDir(val.path);
+  const { path, parent } = renderElement;
   const Show = () => {
     setShow(!show);
   };
@@ -16,7 +17,7 @@ export const RenderDirList = (props) => {
           {show ? "folder_open" : "folder"}
         </i>
 
-        <h3>{val.name}</h3>
+        <h3 className={isActive ? "active" : ""}>{val.name}</h3>
       </div>
       <div
         className="sub-dir-root"
@@ -28,6 +29,7 @@ export const RenderDirList = (props) => {
               return (
                 <li key={`${index}-${i}`}>
                   <RenderDirList
+                    isActive={ele.path === parent}
                     HandleFile={HandleFile}
                     val={ele}
                     index={`${index}-${i}`}
@@ -37,6 +39,7 @@ export const RenderDirList = (props) => {
             return (
               <li key={`${index}-${i}`}>
                 <RenderFile
+                  isActive={ele.path === path}
                   HandleFile={HandleFile}
                   val={ele}
                   index={`${index}-${i}`}
