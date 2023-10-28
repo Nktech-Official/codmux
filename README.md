@@ -1,4 +1,4 @@
-# codmux-v-0.0.2
+# codmux
 
 An Electron application with React
 
