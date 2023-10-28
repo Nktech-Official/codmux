@@ -1,5 +1,5 @@
 appId: tech.nktech-official.codmux
-productName: Comdux
+productName: Codmux
 directories:
   buildResources: build
 files:
@@ -35,17 +35,17 @@ linux:
     - rpm
   maintainer: nktech-official.tech
   category: Education
-  icon: ./build/icon-fill-256x256.png
+  icon: build/icon-fill-256x256.png
   desktop:
     category: Education
-    icon: ./build/icon-fill-256x256.png
+    icon: build/icon-fill-256x256.png
     shortcuts:
       - name: Codmux
-        icon: ./build/icon-noFill.ico
+        icon: build/icon-noFill.ico
 
 appImage:
   artifactName: ${name}-${version}.${ext}
-npmRebuild: false
+npmRebuild: true
 publish:
   provider: generic
   url: https://nktech-official.tech/auto-updates
