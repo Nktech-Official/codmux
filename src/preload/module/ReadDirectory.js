@@ -27,10 +27,7 @@ export const readDir = (path = __dirname) => {
   let prev = null
   const dirs = opendirSync(path)
   let dirent = dirs.readSync()
-  console.log(dirent)
-  console.log(dirent.name)
   while (dirent) {
-    console.log(dirent.name)
     const p = join(path, dirent.name)
     const x = {
       name: dirent.name,

@@ -1,5 +1,5 @@
 appId: tech.nktech-official.codmux
-productName: ${name}
+productName: Comdux
 directories:
   buildResources: build
 files:
@@ -11,7 +11,7 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: ${name}
+  executableName: Codmux
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
@@ -35,12 +35,13 @@ linux:
     - rpm
   maintainer: nktech-official.tech
   category: Education
+  icon: ./build/icon-fill-256x256.png
   desktop:
     category: Education
-    icon: build/icon-fill.png
+    icon: ./build/icon-fill-256x256.png
     shortcuts:
-      - name: ${name}
-        icon: build/icon-noFill.ico
+      - name: Codmux
+        icon: ./build/icon-noFill.ico
 
 appImage:
   artifactName: ${name}-${version}.${ext}
