@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import ReactPlayer from 'react-player'
 
 function VideoPlayer({ path, ...props }) {
@@ -14,6 +14,7 @@ function VideoPlayer({ path, ...props }) {
   }
 
   const handleMouseUp = (e) => {
+    e.preventDefault()
     document.removeEventListener('mousemove', handleMouseMove)
     document.removeEventListener('mouseup', handleMouseUp)
   }
@@ -92,26 +93,6 @@ function VideoPlayer({ path, ...props }) {
       </div>
     </div>
   )
-}
-
-function CustomPlayIcon() {
-  // Define your custom play icon component
-  return <button>Play</button>
-}
-
-function CustomPauseIcon() {
-  // Define your custom pause icon component
-  return <button>Pause</button>
-}
-
-function CustomVolumeIcon() {
-  // Define your custom volume icon component
-  return <button>Volume</button>
-}
-
-function CustomFullscreenIcon() {
-  // Define your custom fullscreen icon component
-  return <button>Fullscreen</button>
 }
 
 export default VideoPlayer
