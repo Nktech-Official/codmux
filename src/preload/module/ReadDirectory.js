@@ -48,6 +48,7 @@ export const readDir = (path = __dirname) => {
     x.next = dirent ? p : null
     directories.push(x)
   }
+  dirs.closeSync()
   const visibleDirectoris = directories.filter((obj) => !obj.isHidden)
   visibleDirectoris.sort((a, b) => {
     // First, sort by "isDirectory" in descending order (directories first)
@@ -58,7 +59,6 @@ export const readDir = (path = __dirname) => {
       return a.isDirectory ? -1 : 1 // Directories come first
     }
   })
-  dirs.closeSync()
   const dirName = basename(path)
   return [visibleDirectoris, dirName]
 }

@@ -1,4 +1,5 @@
 @import url('./google-material-icon.css');
+@import url('./CascadiaCode.css');
 :root {
   /*  */
   --bg-color: #2f3650;
@@ -14,6 +15,8 @@
   --green-1: #5dac5a;
   /*  */
   --scroll-track-bg: #404d7c;
+
+  --bg-kbd: #232a3f;
 }
 * {
   margin: 0;
@@ -240,4 +243,27 @@ ul {
   line-height: 15px;
   font-size: 15px;
   font-style: italic;
+}
+
+.default-Element {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+kbd {
+  background-color: var(--bg-kbd); /* Make the kbd background transparent */
+  border: 1px solid #ccc;
+  padding: 2px 5px;
+  font-family: 'Cascadia Code', monospace;
+  font-size: 14px;
+  color: #fff; /* Keep the text color the same as the container */
+  border-radius: 5px;
+  margin: 3px;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
 }
