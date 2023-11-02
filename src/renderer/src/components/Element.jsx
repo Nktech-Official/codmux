@@ -3,11 +3,10 @@ import RenderHtml from './RenderHtml'
 import RenderPdf from './RenderPdf'
 import AppIcon from '../assets/Icons/logo-transparent-bg.png'
 const Element = ({ renderElement }) => {
-  const { isVideo, isImage, isSubtitle, extension } = renderElement
+  const { isVideo, isImage, extension } = renderElement
   const isHtml = extension === '.html' || extension === '.htm'
   const isPdf = extension === '.pdf'
   const isText = extension === '.txt'
-  if (isSubtitle) return <></>
   if (isImage) {
     return (
       <img
@@ -51,7 +50,7 @@ const Element = ({ renderElement }) => {
                 alignItem: 'center'
               }}
             >
-              <kbd>L</kbd> <text>Increase PlayBack Speed </text> <kbd>+0.10 </kbd>
+              <kbd>L</kbd> <p>Increase PlayBack Speed </p> <kbd>+0.10 </kbd>
             </div>
             <div
               style={{
@@ -62,7 +61,7 @@ const Element = ({ renderElement }) => {
                 alignItem: 'center'
               }}
             >
-              <kbd>J</kbd> <text>Decrease PlayBack by </text> <kbd>-0.10 </kbd>
+              <kbd>J</kbd> <p>Decrease PlayBack by </p> <kbd>-0.10 </kbd>
             </div>
             <div
               style={{
@@ -73,7 +72,7 @@ const Element = ({ renderElement }) => {
                 alignItem: 'center'
               }}
             >
-              <kbd>R</kbd> <text> Reset PlayBack Speed to </text> <kbd>1.00 </kbd>
+              <kbd>R</kbd> <p> Reset PlayBack Speed to </p> <kbd>1.00 </kbd>
             </div>
           </div>
         </div>

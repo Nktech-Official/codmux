@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
@@ -15,21 +15,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 export default function RenderPdf({ renderElement }) {
   const { path } = renderElement
   const [numPages, setNumPages] = useState()
-  const [pageNumber, setPageNumber] = useState(1)
   const [rotateDeg, setRotateDeg] = useState(0)
-  const containerRef = useRef(null)
-
-  const handleScroll = () => {
-    if (containerRef.current) {
-      const container = containerRef.current
-      const containerRect = container.getBoundingClientRect()
-
-      if (containerRect.bottom <= window.innerHeight && pageNumber < numPages) {
-        setPageNumber(pageNumber + 1)
-      }
-    }
-  }
-
+  const [scale, setScale] = useState(1) // Initial scale
   const keyBoardShortcut = (e) => {
     const keyPressed = e.key
     console.log(keyPressed)
@@ -39,22 +26,29 @@ export default function RenderPdf({ renderElement }) {
       console.log(r)
       setRotateDeg(r)
     }
+    if (keyPressed === '+') onZoomIn()
+    if (keyPressed === '-') onZoomOut()
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
     window.addEventListener('keypress', keyBoardShortcut)
     return () => {
-      window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('keypress', keyBoardShortcut)
     }
-  }, [pageNumber, numPages, rotateDeg])
+  }, [numPages, rotateDeg])
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages)
   }
+  const onZoomIn = () => {
+    setScale((prevScale) => prevScale + 0.25)
+  }
+
+  const onZoomOut = () => {
+    setScale((prevScale) => prevScale - 0.25)
+  }
 
   return (
-    <div className="pdf-reader-root" ref={containerRef}>
+    <div className="pdf-reader-root">
       <div>
         <Document
           rotate={rotateDeg}
@@ -65,7 +59,12 @@ export default function RenderPdf({ renderElement }) {
           scale={2}
         >
           {Array.from(new Array(numPages), (el, index) => (
-            <Page key={`page_${index + 1}`} className={'pdf-page'} pageNumber={index + 1}>
+            <Page
+              key={`page_${index + 1}`}
+              scale={scale}
+              className={'pdf-page'}
+              pageNumber={index + 1}
+            >
               <div className="pageNumber">
                 <p>
                   Page {index + 1} of {numPages}

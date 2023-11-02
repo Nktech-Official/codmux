@@ -5,9 +5,7 @@ import { RenderFile } from './RenderFile'
 export const RenderDirList = (props) => {
   const [show, setShow] = useState(false)
   const { val, index, HandleFile, renderElement, isActive } = props
-  console.log(val.path)
   const [subDirs] = window.dir.readDir(val.path)
-  console.log(subDirs)
   const { path, parent } = renderElement
   const Show = () => {
     setShow(!show)

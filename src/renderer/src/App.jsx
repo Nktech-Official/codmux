@@ -13,7 +13,6 @@ function App() {
   const chagePath = (p) => {
     try {
       const [data, name] = window.dir.readDir(p)
-      console.log(data)
       setDir(data)
       setPath(p)
       setDirName(name)
@@ -47,7 +46,6 @@ function App() {
       chagePath(p)
     }
     if (rE) {
-      console.log(rE)
       setrenderElement(JSON.parse(rE))
     }
   }, [])

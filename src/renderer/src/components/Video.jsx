@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import ReactPlayer from 'react-player'
 
-function VideoPlayer({ path, ...props }) {
+function VideoPlayer({ sub, path, ...props }) {
   const [playBackRate, setPlayBackRate] = useState(1.0)
   const [position, setPosition] = useState({ left: 27, top: 27 })
   const vidoeRef = useRef()
-
+  console.log(sub)
   const handleMouseDown = (e) => {
     e.preventDefault()
 
@@ -68,6 +68,7 @@ function VideoPlayer({ path, ...props }) {
   return (
     <div className="video">
       <ReactPlayer
+        crossOrigin="anonymous"
         ref={vidoeRef}
         playbackRate={playBackRate}
         url={path} // Replace with your video URL
@@ -78,6 +79,11 @@ function VideoPlayer({ path, ...props }) {
         onBuffer={bufferLoading}
         onPlaybackRateChange={(rate) => {
           setPlayBackRate(rate)
+        }}
+        config={{
+          file: {
+            tracks: [{ kind: 'subtitles', src: sub, srcLang: 'en', default: true }]
+          }
         }}
       ></ReactPlayer>
       <div

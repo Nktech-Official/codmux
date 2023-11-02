@@ -59,6 +59,27 @@ export const readDir = (path = __dirname) => {
       return a.isDirectory ? -1 : 1 // Directories come first
     }
   })
+  const subTitles = visibleDirectoris.filter((obj) => obj.isSubtitle)
+
+  visibleDirectoris.forEach((obj) => {
+    if (obj.isVideo) {
+      // Check if there is a corresponding subtitle file
+      const videoFilename = obj.name
+      const videoBaseName = basename(videoFilename, extname(videoFilename))
+      const matchingSubtitle = subTitles.find((subtitleObj) => {
+        const subtitleBaseName = basename(subtitleObj.name, extname(subtitleObj.name))
+        return subtitleBaseName === videoBaseName
+      })
+
+      if (matchingSubtitle) {
+        // Create a link between the video and its corresponding subtitle
+
+        // Update the video object to include the Subtitle field
+        obj.Subtitle = matchingSubtitle.path
+      }
+    }
+  })
+
   const dirName = basename(path)
   return [visibleDirectoris, dirName]
 }
