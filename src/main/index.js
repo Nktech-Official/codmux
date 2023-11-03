@@ -16,7 +16,8 @@ function createWindow() {
       preload: join(__dirname, '../preload/index.js'),
       enableRemoteModule: true,
       contextIsolation: true,
-      nodeIntegration: true
+      nodeIntegration: true,
+      devTools: is.dev
     }
   })
   mainWindow.maximize()
@@ -24,7 +25,7 @@ function createWindow() {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
-
+  console.log(is.dev)
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }

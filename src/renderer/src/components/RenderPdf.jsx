@@ -36,44 +36,49 @@ export default function RenderPdf({ renderElement }) {
       window.removeEventListener('keypress', keyBoardShortcut)
     }
   }, [numPages, rotateDeg])
+
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages)
   }
   const onZoomIn = () => {
-    setScale((prevScale) => prevScale + 0.25)
+    setScale((prevScale) => {
+      if (prevScale < 5) return prevScale + 0.25
+      return prevScale
+    })
   }
 
   const onZoomOut = () => {
-    setScale((prevScale) => prevScale - 0.25)
+    setScale((prevScale) => {
+      if (prevScale > 0.25) return prevScale - 0.25
+      return prevScale
+    })
   }
 
   return (
     <div className="pdf-reader-root">
-      <div>
-        <Document
-          rotate={rotateDeg}
-          options={options}
-          className="pdf-reader-document"
-          file={`media-loader://${path}`}
-          onLoadSuccess={onDocumentLoadSuccess}
-          scale={2}
-        >
-          {Array.from(new Array(numPages), (el, index) => (
-            <Page
-              key={`page_${index + 1}`}
-              scale={scale}
-              className={'pdf-page'}
-              pageNumber={index + 1}
-            >
-              <div className="pageNumber">
-                <p>
-                  Page {index + 1} of {numPages}
-                </p>
-              </div>
-            </Page>
-          ))}
-        </Document>
-      </div>
+      <Document
+        rotate={rotateDeg}
+        options={options}
+        className="pdf-reader-document"
+        file={`media-loader://${path}`}
+        onLoadSuccess={onDocumentLoadSuccess}
+        scale={scale}
+      >
+        {Array.from(new Array(numPages), (el, index) => (
+          <Page
+            scale={scale}
+            key={`page_${index + 1}`}
+            className={'pdf-page'}
+            pageNumber={index + 1}
+          >
+            <div className="pageNumber">
+              <p>
+                Page {index + 1} of {numPages}
+              </p>
+            </div>
+          </Page>
+        ))}
+      </Document>
     </div>
   )
 }
