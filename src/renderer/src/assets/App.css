@@ -4,7 +4,7 @@
   /*  */
   --bg-color: #2f3650;
   /*  */
-  --bg-sidebar-color: #202123;
+  --bg-sidebar-color: #1a1f2e;
   /*  */
   --green-4: #436b55;
   /*  */
@@ -40,9 +40,9 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   height: 100% !important;
-  width: 20% !important;
+  width: 0% !important;
   min-width: 300px !important;
-  max-width: 400px !important;
+  max-width: 350px !important;
   overflow-y: scroll !important;
   overflow-x: hidden !important;
   color: whitesmoke;
@@ -153,7 +153,6 @@ ul {
 }
 
 .render-area {
-  width: 70% !important;
   height: 100vh !important;
   display: flex !important;
   align-items: center !important;
@@ -224,26 +223,56 @@ ul {
   opacity: 0.8;
 }
 .pdf-reader-root {
-  align-items: center;
   height: 100%;
   width: 100%;
+  overflow: hidden;
+  /* border: 1px solid blue; */
+}
+.pdf-header {
+  width: 100%;
+  height: 40px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tools {
+  display: flex;
+  height: 100%;
+}
+
+.outline-sidebar {
+  background-color: var(--bg-sidebar-color);
+  width: 20%;
+  min-width: 200px;
+  border: 1px solid green;
+  transition-property: all;
+  transition-duration: 500ms;
   overflow: auto;
 }
 
 .pdf-reader-document {
-  max-width: 95%;
-  height: 100%;
+  width: 100%;
+  height: 94%;
+  flex: 18;
   display: flex;
   justify-content: flex-start;
-  flex-direction: column;
+  border: 1px solid white;
 }
 
+.pages-root {
+  margin: auto;
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+}
+.pages {
+  margin: 30px auto;
+}
 .pdf-page {
-  margin-bottom: 10px;
   width: fit-content;
+  margin: auto;
+  margin-bottom: 10px;
 }
 .pageNumber {
   position: relative;
@@ -255,6 +284,10 @@ ul {
   line-height: 15px;
   font-size: 15px;
   font-style: italic;
+  user-select: none;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
 }
 
 .default-Element {

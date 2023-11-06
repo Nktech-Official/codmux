@@ -14,9 +14,18 @@ function createWindow() {
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      enableRemoteModule: true,
       contextIsolation: true,
+      // nodeIntegrationInSubFrames: true,
+      // allowRunningInsecureContent: true,
       nodeIntegration: true,
+      experimentalFeatures: [
+        'oopiframes',
+        'fetch-streaming',
+        'native-image-to-data-uri',
+        'javascript-top-level-await',
+        'modules',
+        'offscreenCanvas'
+      ],
       devTools: is.dev
     }
   })
@@ -25,7 +34,6 @@ function createWindow() {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
-  console.log(is.dev)
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
