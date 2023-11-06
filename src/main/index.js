@@ -15,17 +15,8 @@ function createWindow() {
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       contextIsolation: true,
-      // nodeIntegrationInSubFrames: true,
-      // allowRunningInsecureContent: true,
+      webSecurity: !is.dev,
       nodeIntegration: true,
-      experimentalFeatures: [
-        'oopiframes',
-        'fetch-streaming',
-        'native-image-to-data-uri',
-        'javascript-top-level-await',
-        'modules',
-        'offscreenCanvas'
-      ],
       devTools: is.dev
     }
   })
